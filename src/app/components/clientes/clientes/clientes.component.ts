@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/interface/cliente';
 import { ClientesService } from 'src/app/servicios/clientes.service';
-
+import {Router} from "@angular/router"; 
 
 @Component({
   selector: 'app-clientes',
@@ -10,14 +10,16 @@ import { ClientesService } from 'src/app/servicios/clientes.service';
 })
 export class ClientesComponent implements OnInit {
 
-clientes:Cliente[] = [];
+  clientes: Cliente[];
 
-  constructor(private _clienteService:ClientesService) { }
+  constructor(private router: Router,private _clienteService:ClientesService) { }
 
   ngOnInit(): void {
 
 this._clienteService.getClientes().subscribe(
 clientes => this.clientes = clientes
+
+
 
 );
 

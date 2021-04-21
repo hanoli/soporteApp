@@ -1,5 +1,6 @@
 import { Router, RouterModule, Routes } from "@angular/router";
-import { IngresaesquipoComponent } from "./components/altas/ingresaesquipo/ingresaesquipo.component";
+import { IngresaclienteComponent } from "./components/altas/ingresaCliente/ingresacliente.component";
+import { IngresaesquipoComponent } from "./components/altas/ingresaEquipo/ingresaesquipo.component";
 import { ClientesComponent } from "./components/clientes/clientes/clientes.component";
 import { FoliosComponent } from "./components/folios/folios/folios.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -9,6 +10,7 @@ const APP_ROUTES: Routes = [
 { path: 'folios', component:FoliosComponent},
 { path: 'clientes', component:ClientesComponent},
 { path: 'ingresaEquipo', component:IngresaesquipoComponent},
+{ path: 'ingresaCliente', component:IngresaclienteComponent},
 {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

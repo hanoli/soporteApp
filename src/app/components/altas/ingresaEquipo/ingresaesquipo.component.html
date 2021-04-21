@@ -1,6 +1,6 @@
 <div class = "container col-md-6 main-container">
-  <form>
-    <div class="form-row">
+  <form (ngSubmit) = "creaFolio()">
+   <div class="form-row">
       <div class="form-group col-md-4">
         <label for="inputState">Tipo de equipo</label>
         <select id="inputState" class="form-control">
@@ -25,12 +25,12 @@
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
-          <label for="inputPassword4">Color</label>
-          <input type="colorEquipo" class="form-control" id="inputPassword4" placeholder="color">
+          <label for="nombre">Color</label>
+          <input type="text" class="form-control"  placeholder="color" [(ngModel)]="folio.nombre" name="nombre">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputEmail4">No.Serie</label>
-          <input type="nSerie" class="form-control" id="inputEmail4" placeholder="No.Serie">
+          <label for="apellido">No.Serie</label>
+          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.apellidoPat" name="apellido">
         </div>
       </div>
      

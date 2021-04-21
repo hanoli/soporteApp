@@ -1,8 +1,7 @@
-export interface Cliente {
-    id:number;
-    nombre:string;
-    apellido:string;
-    fecha:string;
-    email:string;
-    telefono:number;
-}
+export class Cliente {
+    nombre: string;
+    apellidoPat: string;
+    apellidoMat: string;
+    telefono: string;
+    correo: string;
+  }
