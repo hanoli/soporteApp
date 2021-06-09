@@ -1,7 +1,12 @@
+import { Cliente } from "./Cliente";
+
 export class Folio {
-  nombre: string;
-  apellidoPat: string;
-  apellidoMat: string;
-  telefono: string;
-  correo: string;
-  }
+  id: number;
+  folio: String;
+  fecha: Date;
+  tipoEquipo: String;
+  marca: String;
+  modelo: String;
+  numSerie: String;
+  cliente:Cliente;
+}

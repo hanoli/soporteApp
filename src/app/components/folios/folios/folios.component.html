@@ -1,36 +1,45 @@
 <div class="container main-container">
-    <div class="card bg-light mb-3" style="max-width: 37rem;">
-        <div class="card-header">Folios</div>
+    <div class="card bg-light mb-3" >
+        <div class="card-header">Folios
+
+        </div>
         <div class="card-body">
           <div class="card-header">
             <button class="btn btn-rounded btn-secondary" type="button" [routerLink] = "['/ingresaEquipo']">Nuevo Folio</button>
           </div> 
-          
+     
           <div>
-            <table class="table" style="width: 80%">
+            <table class="table table-bordered table-striped">
               <tr>
-                <th>Nombre</th>
-                <th>Materno</th>
-                <th>Paterno</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th></th>
+                <th>Folio</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>TipoEquipo</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Num.Serie</th>
               </tr>
               <tr *ngFor="let folio of folios">
                 <td>
-                  {{folio.nombre}}
+                  {{folio.folio}}
                 </td>
                 <td>
-                  {{folio.apellidoPat}}
+                  {{folio.fecha | date:'yyyy-MM-dd'}}
                 </td>
                 <td>
-                  {{folio.apellidoMat}}
+                  {{folio.cliente.nombre}} {{folio.cliente.apellidoPat}}
                 </td>
                 <td>
-                  {{folio.telefono}}
+                  {{folio.tipoEquipo}}
                 </td>
                 <td>
-                  {{folio.correo}}
+                  {{folio.marca}}
+                </td>
+                <td>
+                  {{folio.modelo}}
+                </td>
+                <td>
+                  {{folio.numSerie}}
                 </td>
               </tr>
             </table>

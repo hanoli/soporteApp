@@ -1,34 +1,94 @@
-<div class = "container col-md-6 main-container">
-      <form (ngSubmit) = "creaFolio()">
-       <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre" [(ngModel)]="cliente.nombre" name="nombre">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="apellidoPat">Paterno</label>
-            <input type="text" class="form-control"  placeholder="ApellidoPat" [(ngModel)]="cliente.apellidoPat" name="apellidoPat">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="apellidoMat">Materno</label>
-            <input type="text" class="form-control" placeholder="ApellidoMat" [(ngModel)]="cliente.apellidoMat" name="apellidoMat">
-          </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="telefono">Telefono</label>
-              <input type="text" class="form-control"  placeholder="Telefono" [(ngModel)]="cliente.telefono" name="telefono">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="correo">Correo</label>
-              <input type="text" class="form-control" placeholder="Correo" [(ngModel)]="cliente.correo" name="correo">
-            </div>
-          </div>
-         
-             <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
+<div class = "container main-container">
+ 
+      
+        <div class="container main-container">
+          <div class="card bg-light mb-3" >
+              <div class="card-header">Clientes</div>
+              <div class="card-body">
+                <div class="card-header">
+                  <button class="btn btn-rounded btn-secondary" type="button" (click)="getItem($event)">+</button>
+           
+                  <button class="btn btn-rounded btn-secondary" type="button" (click)="getItem($event)">-</button>
+                </div>
+
+                <div class="card-header" *ngIf="item">
+                <h5>Alta de clientes</h5> 
+                <form >
+                 <div class="form-row ">
+                    <div class="form-group col-md-4">
+                      <label for="nombre">Nombre</label>
+                      <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre">
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                      <label for="apellidoPat">1er Apellido</label>
+                      <input type="text" class="form-control"  [(ngModel)]="cliente.apellidoPat" name="apellidoPat">
+                    </div>
+          
+                    <div class="form-group col-md-4">
+                      <label for="apellidoMat">2do Apellido</label>
+                      <input type="text" class="form-control"  [(ngModel)]="cliente.apellidoMat" name="apellidoMat">
+                    </div>
+                  </div>
+              
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="telefono">Télefono</label>
+                        <input type="text" class="form-control"  [(ngModel)]="cliente.telefono" name="telefono">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="correo">Correo</label>
+                        <input type="text" class="form-control"  [(ngModel)]="cliente.correo" name="correo">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                       <button type="button" class="btn btn-primary" (click) = "creaCliente()"  *ngIf="!cliente.id else elseBlock" >Guardar</button>
+                       <ng-template #elseBlock>
+                        <button type="button" class="btn btn-primary" (click) = "actualizaCliente()" >Actualizar</button>
+                       </ng-template>
+                      </div>
+                      <div class="form-group col-md-3">
+                       <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <h5 class="card-title"></h5>
+      
+      <table class="table table-bordered table-striped">
+        <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>1er Apellido</th>
+        <th>2do Apellido</th>
+        <th>Télefono</th>
+        <th>Correo</th>
+      </tr>
+        </thead>
+      <tbody>
+        <tr *ngFor="let item of clientes">
+          <td (click) = 'seleccionar(item)'>{{item.nombre}}</td>
+          <td (click) = 'seleccionar(item)'>{{item.apellidoPat}}</td>
+          <td (click) = 'seleccionar(item)'>{{item.apellidoMat}}</td>
+          <td (click) = 'seleccionar(item)'>{{item.telefono}}</td>
+          <td (click) = 'seleccionar(item)'>{{item.correo}}</td>
+          <td>
+            <button class="btn btn-rounded btn-secondary" type="button" name="borrar" (click) = 'eliminar(item)'>Eliminar</button>
+            
+          </td>
+          <td>
+            <button class="btn btn-rounded btn-secondary" type="button" (click) = 'cargaCliente(item)'>Editar</button>
+          </td>
+        </tr>
+      
+      </tbody>
+      </table>
+      
+         </div>
+         </div>
+          
+      </div>
       
     
     </div>

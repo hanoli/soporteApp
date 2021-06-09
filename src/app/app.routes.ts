@@ -11,6 +11,7 @@ const APP_ROUTES: Routes = [
 { path: 'clientes', component:ClientesComponent},
 { path: 'ingresaEquipo', component:IngresaesquipoComponent},
 { path: 'ingresaCliente', component:IngresaclienteComponent},
+{ path: 'ingresaCliente/:id', component:IngresaclienteComponent},
 {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

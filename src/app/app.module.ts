@@ -14,7 +14,7 @@ import { IngresaesquipoComponent } from './components/altas/ingresaEquipo/ingres
 import { IngresaclienteComponent } from "./components/altas/ingresaCliente/ingresacliente.component";
 import { ClientesComponent } from './components/clientes/clientes/clientes.component';
 import { FormsModule } from '@angular/forms';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ModalModule.forRoot(),
+    
     APP_ROUTING
 
   ],

@@ -5,7 +5,8 @@ import {Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Folio } from '../interface/Folio';
-import { Cliente } from '../interface/cliente';
+import { TipoEquipo } from '../interface/TipoEquipo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,15 @@ private httpHeaders = new HttpHeaders({
   }
 
   getFolios(): Observable<Folio[]> {
-    return this.http.get('api/lista').pipe(
+    return this.http.get('api/listaFolios').pipe(
       map(response => response as Folio[])
     );
   }
 
   creaFolio(folio:Folio):Observable<Folio>{
-    return this.http.post<Folio>('api/guardar',folio,{headers:this.httpHeaders})
+  console.log("JsonFolio: " + folio)
+    return this.http.post<Folio>('api/guardarFolio',folio,{headers:this.httpHeaders})
+
   }
   
 }

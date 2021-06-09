@@ -1,19 +1,76 @@
 <div class = "container col-md-6 main-container">
+  
   <form (ngSubmit) = "creaFolio()">
-   <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputState">Tipo de equipo</label>
-        <select id="inputState" class="form-control">
-          <option selected>Secciona tipo</option>
-          <option>...</option>
-        </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Folio: {{numFolio}}</label>
       </div>
       <div class="form-group col-md-6">
-        <label for="inputEmail4">Folio</label>
-        <input type="folio" class="form-control" id="inputEmail4" placeholder="No.Folio">
+        <label for="inputPassword4" >Fecha: {{fecha | date:'yyyy-MM-dd'}}</label>
       </div>
     </div>
+<hr>
+    <h3>Datos del Cliente</h3>
+    <div class="card-header" >
+      <button class="btn btn-rounded btn-secondary" type="button" (click) = "addClient()" >Agregar</button>
+    </div> 
+
+
+
     <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4" >#Cliente: {{cliente.id}}</label>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Nombre: {{nombreCliente}} {{apellidoPatCliente}}</label>
+      </div>
+    </div>
+    <hr>
+    <h3>Datos del Equipo</h3>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputState">Tipo de equipo</label>
+        <select [(ngModel)]="selectedTipoEquipo.id" id="inputState" class="form-control" #t (change)="capturar(t.value)">
+          <option selected>Selecciona tipo</option>
+          <option *ngFor="let tipo of tipoEquipo"  value={{tipo.tipoEquipo}} > {{tipo.tipoEquipo}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputState">Marca</label>
+        <select [(ngModel)]="selectedMarca.id" id="inputState" class="form-control" #m (change)="capturarMarca(m.value)">
+          <option selected>Selecciona marca</option>
+          <option *ngFor="let tipo of marca" value={{tipo.marca}} > {{tipo.marca}}</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="form-row">
+        <!--<div class="form-group col-md-6">
+          <label for="inputEmail4">Marca</label>
+          <input type="text" class="form-control" placeholder="Marca" [(ngModel)]="folio.marca" name="marca">
+        </div>-->
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Modelo</label>
+          <input type="text" class="form-control" placeholder="Modelo" [(ngModel)]="folio.modelo" name="modelo">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apellido">No.Serie</label>
+          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.numSerie" name="apellido">
+        </div>
+      </div>
+
+      <!--
+      <div class="form-row">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="getAlbumId($event,'1')">
+          <label class="form-check-label" for="defaultCheck1">
+            Monitor
+          </label>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="itemMonitor">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Marca</label>
           <input type="marca" class="form-control" id="inputEmail4" placeholder="Marca">
@@ -22,19 +79,37 @@
           <label for="inputPassword4">Modelo</label>
           <input type="modelo" class="form-control" id="inputPassword4" placeholder="Modelo">
         </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label for="nombre">Color</label>
-          <input type="text" class="form-control"  placeholder="color" [(ngModel)]="folio.nombre" name="nombre">
-        </div>
         <div class="form-group col-md-6">
           <label for="apellido">No.Serie</label>
           <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.apellidoPat" name="apellido">
         </div>
       </div>
-     
+      <div class="form-row" >
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" (change)="getAlbumId2($event,'2')">
+          <label class="form-check-label" for="defaultCheck2">
+            cargador
+          </label>
+        </div>
+      </div>
+      <div class="form-row" *ngIf="itemCargador">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Marca</label>
+          <input type="marca" class="form-control" id="inputEmail4" placeholder="Marca">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Modelo</label>
+          <input type="modelo" class="form-control" id="inputPassword4" placeholder="Modelo">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="apellido">No.Serie</label>
+          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.apellidoPat" name="apellido">
+        </div>
+      </div>-->
+
+   
          <button type="submit" class="btn btn-primary">Guardar</button>
+    
     </form>
   
 
