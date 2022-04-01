@@ -1,0 +1,79 @@
+.box {
+    min-height: 20px;
+    width: 20px;
+  }
+
+
+  #wrap{
+    display: block;
+ }
+ 
+ #box1, #box2, #box3, #box4{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     text-align: center;
+     word-spacing: 10px;
+ }
+ 
+ #box1{
+     text-align: center;
+     height: 100px;
+     overflow: auto;
+ }
+ 
+ #progressbar{
+     text-align: center;
+     height: 20px;
+     padding: 10px;
+ }
+ 
+ #box1 span{
+     margin-left: 10px;
+     
+ }
+ 
+ #box2 span{
+     margin-left: 10px;
+     margin-right: 10px;
+     word-spacing: 10px;
+ }
+
+ #subir{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+ 
+ #box2 #selectButton{
+     background-color: rgb(149, 213, 218);
+     word-spacing: 10px;
+ }
+ 
+ #box2 #uploadButton{
+    word-spacing: 10px;
+     background-color: rgb(247, 247, 248);
+ }
+ 
+ #box3{
+     color: red;
+ }
+ 
+ #box4 ul{
+  list-style: none;
+ }
+ 
+ #box4 ul li{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ 
+ #box4 ul li a{
+  text-decoration: none;
+  color: white;
+  margin-right: 20px;
+ }
+
+ 

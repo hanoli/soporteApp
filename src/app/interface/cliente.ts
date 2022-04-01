@@ -5,6 +5,7 @@ export class Cliente {
     nombre: string;
     apellidoPat: string;
     apellidoMat: string;
+    direccion: string;
     telefono: string;
     correo: string;
     folios: Folio[]=[];

@@ -1,13 +1,12 @@
 import { Cliente } from "./Cliente";
 
-export class Folio {
-  id: number;
-  folio: number;
+export class FolioAprobadosModel {
+  folio:number;
   fecha: Date;
   tipoEquipo: String;
   marca: String;
   modelo: String;
   numSerie: String;
-  cliente:Cliente;
-  comentarios:String;
+  cliente: number;
+  estatus: number;  
 }

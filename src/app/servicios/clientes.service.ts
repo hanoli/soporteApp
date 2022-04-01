@@ -25,6 +25,8 @@ export class ClientesService {
   }
 
   creaCliente(cliente:Cliente):Observable<Cliente>{
+    console.log('Se recibe cliente con apellido parterno ' + cliente.apellidoMat)
+    console.log('Se recibe cliente con id ' + cliente.id)
     return this.http.post<Cliente>('api/guardar',cliente,{headers:this.httpHeaders})
   }
 

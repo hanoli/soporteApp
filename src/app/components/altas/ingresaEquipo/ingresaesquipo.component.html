@@ -1,116 +1,150 @@
+
+
 <div class = "container col-md-6 main-container">
-  
-  <form (ngSubmit) = "creaFolio()">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Folio: {{numFolio}}</label>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4" >Fecha: {{fecha | date:'yyyy-MM-dd'}}</label>
-      </div>
-    </div>
+
+
+  <form *ngIf="!cargaImagen" [formGroup]="formFolio" (ngSubmit) = "creaFolio()">
+
+  <mat-card-header>
+    <mat-card-title>Alta de folios</mat-card-title>
+  </mat-card-header>
 <hr>
-    <h3>Datos del Cliente</h3>
-    <div class="card-header" >
-      <button class="btn btn-rounded btn-secondary" type="button" (click) = "addClient()" >Agregar</button>
-    </div> 
-
-
-
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4" >#Cliente: {{cliente.id}}</label>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="inputPassword4">Nombre: {{nombreCliente}} {{apellidoPatCliente}}</label>
-      </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4"><b>Folio:</b> {{folio.folio}}</label>
     </div>
-    <hr>
-    <h3>Datos del Equipo</h3>
-
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="inputState">Tipo de equipo</label>
-        <select [(ngModel)]="selectedTipoEquipo.id" id="inputState" class="form-control" #t (change)="capturar(t.value)">
-          <option selected>Selecciona tipo</option>
-          <option *ngFor="let tipo of tipoEquipo"  value={{tipo.tipoEquipo}} > {{tipo.tipoEquipo}}</option>
-        </select>
-      </div>
-
-      <div class="form-group col-md-4">
-        <label for="inputState">Marca</label>
-        <select [(ngModel)]="selectedMarca.id" id="inputState" class="form-control" #m (change)="capturarMarca(m.value)">
-          <option selected>Selecciona marca</option>
-          <option *ngFor="let tipo of marca" value={{tipo.marca}} > {{tipo.marca}}</option>
-        </select>
-      </div>
-
+    <div class="form-group col-md-6">
+      <label for="inputPassword4" ><b>Fecha:</b> {{fecha | date:'yyyy-MM-dd'}}</label>
     </div>
-    <div class="form-row">
-        <!--<div class="form-group col-md-6">
-          <label for="inputEmail4">Marca</label>
-          <input type="text" class="form-control" placeholder="Marca" [(ngModel)]="folio.marca" name="marca">
-        </div>-->
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Modelo</label>
-          <input type="text" class="form-control" placeholder="Modelo" [(ngModel)]="folio.modelo" name="modelo">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="apellido">No.Serie</label>
-          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.numSerie" name="apellido">
-        </div>
-      </div>
-
-      <!--
+  </div>
+  <mat-tab-group dynamicHeight>
+    
+    <mat-tab label="Datos del Cliente"> 
+      
+      <div class = "main-container">
+        <button class="btn btn-rounded btn" type="button" (click) = "addClient()" ><img class="box" src="assets/img/mas.png"></button>
+      </div> 
+  
       <div class="form-row">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" (change)="getAlbumId($event,'1')">
-          <label class="form-check-label" for="defaultCheck1">
-            Monitor
-          </label>
+        <div class="form-group col-md-5">
+          <mat-label><b>Num. Cliente:</b> {{cliente.id}}</mat-label>
+        </div>
+        <div class="form-group col-md-4">
+          <mat-label><b>Nombre:</b> {{nombreCliente}} {{apellidoPatCliente}} {{apellidoMatCliente}}</mat-label>
         </div>
       </div>
-      <div class="form-row" *ngIf="itemMonitor">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Marca</label>
-          <input type="marca" class="form-control" id="inputEmail4" placeholder="Marca">
+    
+    </mat-tab>
+    <mat-tab label="Datos del Equipo"> 
+
+      <div class="form-row main-container">
+        <div class="form-group col-md-5">
+          <mat-form-field>
+            <mat-label>Tipo de equipo</mat-label>
+            <mat-select [(ngModel)]="selectedTipoEquipo.id"  #t (selectionChange)="capturar(t.value)" formControlName="tipoEquipo">
+              <mat-option *ngFor="let tipo of tipoEquipo" [value]="tipo.tipoEquipo">
+                {{tipo.tipoEquipo}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
         </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Modelo</label>
-          <input type="modelo" class="form-control" id="inputPassword4" placeholder="Modelo">
+        
+  
+        <div class="form-group col-md-3">
+          <mat-form-field>
+            <mat-label>Marca</mat-label>
+            <mat-select [(ngModel)]="selectedMarca.id"  #m (selectionChange)="capturarMarca(m.value)" formControlName="marca" >
+              <mat-option *ngFor="let tipo of marca" [value]="tipo.marca">
+                {{tipo.marca}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+          
         </div>
-        <div class="form-group col-md-6">
-          <label for="apellido">No.Serie</label>
-          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.apellidoPat" name="apellido">
-        </div>
+  
       </div>
-      <div class="form-row" >
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" (change)="getAlbumId2($event,'2')">
-          <label class="form-check-label" for="defaultCheck2">
-            cargador
-          </label>
-        </div>
+     
+      <div class="form-row">
+     
+        <div class="form-group col-md-5">
+            <mat-form-field class="example-full-width">
+              <label for="inputPassword4">Modelo</label>
+             <input matInput id="modelo" [(ngModel)]="folio.modelo" name="modelo" formControlName="modelo">
+           </mat-form-field>
+       </div>
+
+        
+       <div class="form-group col-md-3">
+            <mat-form-field class="example-full-width">
+              <label for="inputPassword4">No.Serie</label>
+             <input matInput id="modelo" [(ngModel)]="folio.numSerie"  name="numSerie" formControlName="numSerie">
+           </mat-form-field>
+       </div>
+
+      
+
       </div>
-      <div class="form-row" *ngIf="itemCargador">
-        <div class="form-group col-md-6">
-          <label for="inputEmail4">Marca</label>
-          <input type="marca" class="form-control" id="inputEmail4" placeholder="Marca">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="inputPassword4">Modelo</label>
-          <input type="modelo" class="form-control" id="inputPassword4" placeholder="Modelo">
-        </div>
-        <div class="form-group col-md-6">
-          <label for="apellido">No.Serie</label>
-          <input type="text" class="form-control" placeholder="No.Serie" [(ngModel)]="folio.apellidoPat" name="apellido">
-        </div>
-      </div>-->
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <!--<mat-form-field class="example-full-width">
+            <label for="inputPassword4">Comentarios</label>
+           <input matInput id="comentarios" [(ngModel)]="folio.comentarios"  name="comentarios" formControlName="comentarios">
+         </mat-form-field>-->
+         <mat-form-field>
+          <mat-label>Comentarios</mat-label>
+          <textarea  matInput id="comentarios" [(ngModel)]="folio.comentarios"  name="comentarios" formControlName="comentarios"></textarea>
+        </mat-form-field>
+       </div>
+      </div>
+
+
+      <br>
+      <div class="form-group col-md-10">
+         <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </mat-tab>
+    
+  </mat-tab-group>
 
    
-         <button type="submit" class="btn btn-primary">Guardar</button>
-    
     </form>
-  
+
+    
+      
+    <div *ngIf="cargaImagen">
+      <mat-card-header>
+        <mat-card-title>Carga de imagenes</mat-card-title>
+      </mat-card-header>
+      <div mode="buffer" *ngFor="let progress of progressInfo">
+        <span>{{progress.fileName}}</span>&nbsp;
+        <span>{{progress.value}}%</span>
+        <div id="progressbar">
+            <mat-progress-bar mode="buffer" value={{progress.value}}>
+            </mat-progress-bar>
+        </div>
+      </div>
+      <div id="box2">
+          <button id="selectButton" mat-raised-button (click)="fileInput.click()">Seleccionar</button>
+    
+          <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+          <span *ngIf="fileName">{{fileName}}
+            <button id="uploadButton" mat-raised-button *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
+          <mat-icon>file_upload</mat-icon>
+        </button>
+      </span>
+      </div>
+      <span>{{message}}</span>
+      <div class="form-group col-md-10">
+        <button class="btn btn-rounded btn-primary" type="button" (click)="actualizarBoolean()">Crear nuevo folio</button>
+     </div>
+     </div>  
+    
+
+    
+    
 
 </div>
+
