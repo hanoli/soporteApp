@@ -1,6 +1,6 @@
 # SoporteApp
 
-Este proyecto fue construido en Angular y trabaja en conjunto con el proyecto llamado demo 
+Este proyecto fue construido en Angular y trabaja en conjunto con el proyecto llamado soporteApp-API 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
 
